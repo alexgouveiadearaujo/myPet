@@ -1,0 +1,14 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { InewUser } from './inew-user';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class NewUserService {
+  constructor(private http: HttpClient) {}
+
+  registerNewUser(newUser: InewUser) {
+    return this.http.post('http://localhost3000/user/signup', newUser);
+  }
+}
