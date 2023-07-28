@@ -13,13 +13,16 @@
   <div class="form-group mb-4">
     <input class="form-control" placeholder="Usuário" formControlName="userName"/>
     <p *ngIf="newUserForm.get('userName')?.errors?.['lowerCase'] && newUserForm.get('userName')?.touched" class="text-danger">usuário deve conter apenas letras minúsculas</p>
+    <p *ngIf="newUserForm.get('userName')?.errors?.['userExists']" class="text-danger">usuário já existe</p>
+
   </div>
   <div class="form-group mb-4">
     <input class="form-control" placeholder="Senha" formControlName="password"/>
+    <p *ngIf="newUserForm.errors?.['sameUsernameAndPassword']" class="text-danger">Senha deve ser diferente de usuário</p>
   </div>
 
   <button class="btn btn-primary btn-block w-100">Cadastro</button>
 
 </form>
 <p>Já é um usário? <a [routerLink]="['']">faça login</a></p>
-<!-- <p *ngIf="" class="text-danger"></p> -->
+
