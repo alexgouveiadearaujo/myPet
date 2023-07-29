@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent {
   user$ = this.userService.returnUser();
-  constructor(private userService: UserService, private router: Router) {console.log('first' , this.user$)}
+  constructor(private userService: UserService, private router: Router) {}
 
   logout() {
     this.userService.logout();
