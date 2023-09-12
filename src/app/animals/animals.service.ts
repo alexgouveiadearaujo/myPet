@@ -20,4 +20,15 @@ export class AnimalsService {
       headers
     });
   }
+
+  listAllAnimals(): Observable<Ianimals> {
+    const token = this.tokenService.returnToken();
+    const headers = new HttpHeaders().append('x-access-token' , token);
+    return this.http.get<Ianimals>(`${API}/photos`, {
+      headers
+    });
+  }
+
+
+
 }

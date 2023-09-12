@@ -8,6 +8,7 @@ import { Ianimals } from '../ianimal';
 })
 export class AnimalPhotoGridComponent implements OnInit {
   @Input() animals!: Ianimals;
+
   constructor() { }
 
   ngOnInit(): void {

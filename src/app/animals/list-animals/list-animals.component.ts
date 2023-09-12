@@ -10,7 +10,9 @@ import { Observable, switchMap } from 'rxjs';
   styleUrls: ['./list-animals.component.css'],
 })
 export class ListAnimalsComponent implements OnInit {
-  animals$!: Observable<Ianimals>;
+  allAnimals$!: Observable<Ianimals>;
+  myPosts$!: Observable<Ianimals>;
+  isVisible: boolean = true;
   constructor(
     private userService: UserService,
     private animalsService: AnimalsService
@@ -23,11 +25,30 @@ export class ListAnimalsComponent implements OnInit {
     //     this.animals = animals;
     //   })
     // })
-    this.animals$ = this.userService.returnUser().pipe(
+    // this.animals$ = this.userService.returnUser().pipe(
+    //   switchMap((user) => {
+    //     const userName = user.name ?? '';
+    //     return this.animalsService.userList(userName);
+    //   })
+    // );
+
+    //AO LOGAR APARECE TODOS
+    // this.allAnimals$ =  this.animalsService.listAllAnimals()
+  }
+
+  myPetsPosted() {
+    console.log('meus');
+    this.isVisible = false;
+    this.myPosts$ = this.userService.returnUser().pipe(
       switchMap((user) => {
         const userName = user.name ?? '';
         return this.animalsService.userList(userName);
       })
     );
+  }
+  allPets() {
+    console.log('todos');
+    this.isVisible = true;
+    this.allAnimals$ = this.animalsService.listAllAnimals();
   }
 }
