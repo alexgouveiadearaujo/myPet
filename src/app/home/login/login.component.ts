@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   password = '';
   erro = false
   constructor(private authService: AuthenticationService , private router: Router) {}
-
   ngOnInit(): void {}
 
   login() {
@@ -21,6 +20,7 @@ export class LoginComponent implements OnInit {
         console.log('first')
         this.router.navigate(['animals'])
       }, (error)=>{
+        this.erro = true;
         console.log(error)
       }
     )
